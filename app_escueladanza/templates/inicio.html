@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Inicio - Escuela de Danza{% endblock %}
+{% load static %}
+{% block content %}
+<div class="text-center">
+    <h1 class="mb-4">Bienvenido al Sistema de Administración de la Escuela de Danza</h1>
+    <p>Este sistema te permitirá administrar la información de profesores, alumnos y clases de nuestra escuela.</p>
+    <img src="{% static 'app_escueladanza/img/img.jpg' %}" 
+        alt="Escuela de danza" 
+        class="img-fluid rounded shadow" style="max-width: 600px;">
+
+</div>
+{% endblock %}
