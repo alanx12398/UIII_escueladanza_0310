@@ -43,26 +43,23 @@
         <!-- ALUMNOS -->
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                <i class="bi bi-people"></i> Alumnos
+            <i class="bi bi-people"></i> Alumnos
             </a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Agregar Alumno</a></li>
-                <li><a class="dropdown-item" href="#">Ver Alumnos</a></li>
-                <li><a class="dropdown-item" href="#">Actualizar Alumno</a></li>
-                <li><a class="dropdown-item" href="#">Borrar Alumno</a></li>
+            <li><a class="dropdown-item" href="{% url 'agregar_alumno' %}">Agregar Alumno</a></li>
+            <li><a class="dropdown-item" href="{% url 'ver_alumnos' %}">Ver Alumnos</a></li>
+            <!-- actualizar y borrar se hacen desde la lista -->
             </ul>
         </li>
 
         <!-- CLASES -->
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                <i class="bi bi-easel"></i> Clases
+            <a class="nav-link dropdown-toggle" href="#" id="clasesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-journal-text"></i> Clases
             </a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Agregar Clase</a></li>
-                <li><a class="dropdown-item" href="#">Ver Clases</a></li>
-                <li><a class="dropdown-item" href="#">Actualizar Clase</a></li>
-                <li><a class="dropdown-item" href="#">Borrar Clase</a></li>
+            <ul class="dropdown-menu" aria-labelledby="clasesDropdown">
+                <li><a class="dropdown-item" href="{% url 'agregar_clase' %}">Agregar Clase</a></li>
+                <li><a class="dropdown-item" href="{% url 'ver_clases' %}">Ver Clases</a></li>
             </ul>
         </li>
         </ul>

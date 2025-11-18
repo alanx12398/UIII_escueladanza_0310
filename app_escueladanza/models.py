@@ -36,17 +36,17 @@ class Alumno(models.Model):
         return f"{self.nombre} {self.apellido}"
 
 
-# ==========================================
-# MODELO: CLASE
-# ==========================================
+# ========================
+# MODELO: CLASE 
+# ========================
 class Clase(models.Model):
-    nombre = models.CharField(max_length=100)
-    descripcion = models.TextField(blank=True, null=True)
-    duracion = models.DurationField(help_text="Duración de la clase (hh:mm:ss)")
+    nombre_clase = models.CharField(max_length=100)
+    descripcion = models.TextField()
     horario = models.CharField(max_length=50)
-    cupo_maximo = models.PositiveIntegerField()
-    profesor = models.ForeignKey(Profesor, on_delete=models.CASCADE, related_name="clases")
-    alumnos = models.ManyToManyField(Alumno, related_name="clases")
+    profesor = models.ForeignKey(Profesor, on_delete=models.CASCADE)
+    alumnos = models.ManyToManyField(Alumno)
+    from datetime import date
+    fecha_inicio = models.DateField(default=date.today)
 
     def __str__(self):
-        return self.nombre
+        return self.nombre_clase

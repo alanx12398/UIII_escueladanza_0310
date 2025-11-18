@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %}Agregar Alumno{% endblock %}
+{% block content %}
+<h2>Agregar Alumno</h2>
+<form method="POST" class="mt-3">
+{% csrf_token %}
+<div class="row mb-3">
+    <div class="col">
+        <label>Nombre</label>
+        <input type="text" name="nombre" class="form-control" required>
+    </div>
+    <div class="col">
+        <label>Apellido</label>
+        <input type="text" name="apellido" class="form-control" required>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col">
+        <label>Fecha de Nacimiento</label>
+        <input type="date" name="fecha_nacimiento" class="form-control" required>
+    </div>
+    <div class="col">
+        <label>Correo</label>
+        <input type="email" name="correo" class="form-control" required>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col">
+        <label>Teléfono</label>
+        <input type="text" name="telefono" class="form-control" required>
+    </div>
+    <div class="col">
+    <label>Nivel</label>
+    <select name="nivel" class="form-select" required>
+        <option value="Principiante">Principiante</option>
+        <option value="Intermedio">Intermedio</option>
+        <option value="Avanzado">Avanzado</option>
+    </select>
+    </div>
+</div>
+
+<div class="mb-3">
+    <label>Fecha de Inscripción</label>
+    <input type="date" name="fecha_inscripcion" class="form-control" required>
+</div>
+
+<button type="submit" class="btn btn-success"><i class="bi bi-plus-circle"></i> Guardar</button>
+</form>
+{% endblock %}

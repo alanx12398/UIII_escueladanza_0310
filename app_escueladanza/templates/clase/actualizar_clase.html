@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+<h2 class="text-center mb-3">Actualizar Clase</h2>
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="nombre_clase" value="{{ clase.nombre_clase }}" class="form-control mb-2">
+    <textarea name="descripcion" class="form-control mb-2">{{ clase.descripcion }}</textarea>
+    <input type="text" name="horario" value="{{ clase.horario }}" class="form-control mb-2">
+    <label>Profesor:</label>
+    <select name="profesor" class="form-select mb-2">
+        {% for p in profesores %}
+        <option value="{{ p.id }}" {% if p.id == clase.profesor.id %}selected{% endif %}>{{ p.nombre }} {{ p.apellido }}</option>
+        {% endfor %}
+    </select>
+    <label>Alumnos:</label>
+    <select name="alumnos" multiple class="form-select mb-2">
+        {% for a in alumnos %}
+        <option value="{{ a.id }}" {% if a in clase.alumnos.all %}selected{% endif %}>{{ a.nombre }} {{ a.apellido }}</option>
+        {% endfor %}
+    </select>
+    <input type="date" name="fecha_inicio" value="{{ clase.fecha_inicio|date:'Y-m-d' }}" class="form-control mb-2">
+    <button type="submit" class="btn btn-primary w-100">Actualizar</button>
+</form>
+</div>
+{% endblock %}

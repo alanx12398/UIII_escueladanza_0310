@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4 text-center">
+<h3>¿Seguro que deseas eliminar la clase "{{ clase.nombre_clase }}"?</h3>
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a href="{% url 'ver_clases' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+</div>
+{% endblock %}

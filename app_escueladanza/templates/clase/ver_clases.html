@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+<h2 class="text-center mb-3">Lista de Clases</h2>
+<table class="table table-striped table-hover">
+    <thead>
+    <tr>
+        <th>Nombre</th>
+        <th>Profesor</th>
+        <th>Horario</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for clase in clase %}
+        <tr>
+        <td>{{ clase.nombre_clase }}</td>
+        <td>{{ clase.profesor }}</td>
+        <td>{{ clase.horario }}</td>
+        <td>
+            <a href="{% url 'actualizar_clase' clase.id %}" class="btn btn-warning btn-sm">Editar</a>
+            <a href="{% url 'borrar_clase' clase.id %}" class="btn btn-danger btn-sm">Borrar</a>
+        </td>
+    </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}
