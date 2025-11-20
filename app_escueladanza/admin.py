@@ -1,33 +1,30 @@
 from django.contrib import admin
-from .models import Profesor, Alumno, Clase
+from .models import Profesor, Alumno, Clase, Salon, Asistencia
 
-# ========================
-# ADMIN: PROFESOR
-# ========================
 @admin.register(Profesor)
 class ProfesorAdmin(admin.ModelAdmin):
-    list_display = ('id', 'nombre', 'apellido', 'especialidad', 'telefono', 'correo')
+    list_display = ('id', 'nombre', 'apellido', 'especialidad', 'telefono', 'correo', 'activo')
     search_fields = ('nombre', 'apellido', 'especialidad')
-    ordering = ('nombre',)
 
-
-# ========================
-# ADMIN: ALUMNO
-# ========================
 @admin.register(Alumno)
 class AlumnoAdmin(admin.ModelAdmin):
-    list_display = ('id', 'nombre', 'apellido', 'nivel', 'telefono', 'correo', 'fecha_inscripcion')
+    list_display = ('id', 'nombre', 'apellido', 'nivel', 'correo')
     search_fields = ('nombre', 'apellido', 'correo')
-    list_filter = ('nivel',)
-    ordering = ('nombre',)
 
+@admin.register(Salon)
+class SalonAdmin(admin.ModelAdmin):
+    list_display = ('id', 'nombre', 'capacidad', 'ubicacion')
+    search_fields = ('nombre',)
 
-# ========================
-# ADMIN: CLASE
-# ========================
 @admin.register(Clase)
 class ClaseAdmin(admin.ModelAdmin):
-    list_display = ('id', 'nombre_clase', 'descripcion', 'horario', 'profesor', 'fecha_inicio')
-    search_fields = ('nombre_clase', 'descripcion', 'horario')
-    list_filter = ('profesor', 'fecha_inicio')
-    ordering = ('nombre_clase',)
+    list_display = ('id', 'nombre_clase', 'profesor', 'salon', 'fecha_inicio')
+    search_fields = ('nombre_clase', 'profesor__nombre', 'profesor__apellido')
+    filter_horizontal = ('alumnos',)
+
+@admin.register(Asistencia)
+class AsistenciaAdmin(admin.ModelAdmin):
+    list_display = ('id', 'fecha', 'alumno', 'clase', 'estado', 'entrada', 'salida')
+    search_fields = ('alumno__nombre', 'clase__nombre_clase')
+    list_filter = ('fecha', 'estado')
+

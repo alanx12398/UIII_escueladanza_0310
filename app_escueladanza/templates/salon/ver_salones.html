@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center mb-3">Lista de Salones</h2>
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Capacidad</th>
+                <th>Ubicación</th>
+                <th>Uso</th>
+                <th>Equipo Disponible</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for salon in salones %}
+            <tr>
+                <td>{{ salon.nombre }}</td>
+                <td>{{ salon.capacidad }}</td>
+                <td>{{ salon.ubicacion }}</td>
+                <td>{{ salon.uso }}</td>
+                <td>{{ salon.equipo_disponible }}</td>
+
+                <td>
+                    <a href="{% url 'actualizar_salon' salon.id %}" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="{% url 'borrar_salon' salon.id %}" class="btn btn-danger btn-sm">Borrar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,14 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container mt-5">
-    <h3 class="text-center">
-        ¿Seguro que deseas eliminar la clase "{{ clase.nombre_clase }}"?
-    </h3>
+    <h3 class="text-center">¿Seguro que deseas eliminar el salón "{{ salon.nombre }}"?</h3>
 
     <form method="POST" class="text-center mt-3">
         {% csrf_token %}
         <button class="btn btn-danger">Eliminar</button>
-        <a href="{% url 'ver_clases' %}" class="btn btn-secondary">Cancelar</a>
+        <a href="{% url 'ver_salones' %}" class="btn btn-secondary">Cancelar</a>
     </form>
 </div>
 {% endblock %}

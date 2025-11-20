@@ -2,26 +2,40 @@
 {% block content %}
 <div class="container mt-4">
 <h2 class="text-center mb-3">Lista de Clases</h2>
+
 <table class="table table-striped table-hover">
     <thead>
     <tr>
         <th>Nombre</th>
         <th>Profesor</th>
         <th>Horario</th>
+        <th>Inicio</th>
+        <th>Alumnos</th>
         <th>Acciones</th>
     </tr>
     </thead>
+
     <tbody>
-        {% for clase in clase %}
+        {% for clase in clases %}
         <tr>
-        <td>{{ clase.nombre_clase }}</td>
-        <td>{{ clase.profesor }}</td>
-        <td>{{ clase.horario }}</td>
-        <td>
-            <a href="{% url 'actualizar_clase' clase.id %}" class="btn btn-warning btn-sm">Editar</a>
-            <a href="{% url 'borrar_clase' clase.id %}" class="btn btn-danger btn-sm">Borrar</a>
-        </td>
-    </tr>
+            <td>{{ clase.nombre_clase }}</td>
+            <td>{{ clase.profesor.nombre }}</td>
+            <td>{{ clase.horario }}</td>
+            <td>{{ clase.fecha_inicio }}</td>
+
+            <td>
+                {% for alumno in clase.alumnos.all %}
+                    {{ alumno.nombre }} {{ alumno.apellidos }}<br>
+                {% empty %}
+                    <span class="text-muted">Sin alumnos</span>
+                {% endfor %}
+            </td>
+
+            <td>
+                <a href="{% url 'actualizar_clase' clase.id %}" class="btn btn-warning btn-sm">Editar</a>
+                <a href="{% url 'borrar_clase' clase.id %}" class="btn btn-danger btn-sm">Borrar</a>
+            </td>
+        </tr>
         {% endfor %}
     </tbody>
 </table>

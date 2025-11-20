@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center">Actualizar Salón</h2>
+
+    <form method="POST" action="{% url 'actualizar_salon' salon.id %}">
+        {% csrf_token %}
+        <label>Nombre:</label>
+        <input type="text" name="nombre" class="form-control" value="{{ salon.nombre }}" required>
+
+        <label class="mt-2">Capacidad:</label>
+        <input type="number" name="capacidad" class="form-control" value="{{ salon.capacidad }}" required>
+
+        <label class="mt-2">Ubicación:</label>
+        <input type="text" name="ubicacion" class="form-control" value="{{ salon.ubicacion }}" required>
+
+        <label class="mt-2">Uso:</label>
+        <input type="text" name="uso" class="form-control" value="{{ salon.uso }}" required>
+
+        <label class="mt-2">Equipo disponible:</label>
+        <input type="text" name="equipo_disponible" class="form-control" value="{{ salon.equipo_disponible }}">
+
+        <button class="btn btn-success mt-3" type="submit">Actualizar</button>
+    </form>
+</div>
+{% endblock %}

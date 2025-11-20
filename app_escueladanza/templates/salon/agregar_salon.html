@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center mb-3">Agregar Salón</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        
+        <label>Nombre del salón:</label>
+        <input type="text" name="nombre" class="form-control" required>
+
+        <label class="mt-2">Capacidad:</label>
+        <input type="number" name="capacidad" class="form-control" required>
+
+        <label class="mt-2">Ubicación:</label>
+        <input type="text" name="ubicacion" class="form-control" required>
+
+        <label class="mt-2">Uso:</label>
+        <input type="text" name="uso" class="form-control" required>
+
+        <label class="mt-2">Equipo disponible:</label>
+        <input type="text" name="equipo_disponible" class="form-control">
+
+        <button class="btn btn-primary mt-3" type="submit">Guardar</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,68 +1,70 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand fw-bold text-light" href="#">
-        <i class="bi bi-building"></i> Sistema de Administración Escuela de Danza
-        </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+        <a class="navbar-brand" href="{% url 'inicio' %}">Escuela de Danza</a>
 
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-        <!-- INICIO -->
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'inicio' %}">
-                <i class="bi bi-house-door"></i> Inicio
-            </a>
-        </li>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
 
-        <!-- CATEGORIAS -->
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                <i class="bi bi-tags"></i> Categorías
-            </a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Agregar Categoría</a></li>
-                <li><a class="dropdown-item" href="#">Ver Categorías</a></li>
-                <li><a class="dropdown-item" href="#">Actualizar Categoría</a></li>
-                <li><a class="dropdown-item" href="#">Borrar Categoría</a></li>
+                <!-- Alumnos -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
+                        Alumnos
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'ver_alumnos' %}">Ver alumnos</a></li>
+                        <li><a class="dropdown-item" href="{% url 'agregar_alumno' %}">Agregar alumno</a></li>
+                    </ul>
+                </li>
+
+                <!-- Profesores -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
+                        Profesores
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'ver_profesores' %}">Ver profesores</a></li>
+                        <li><a class="dropdown-item" href="{% url 'agregar_profesor' %}">Agregar profesor</a></li>
+                    </ul>
+                </li>
+
+                <!-- Clases -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
+                        Clases
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'ver_clases' %}">Ver clases</a></li>
+                        <li><a class="dropdown-item" href="{% url 'agregar_clase' %}">Agregar clase</a></li>
+                    </ul>
+                </li>
+
+                <!-- Asistencias -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
+                        Asistencias
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'ver_asistencias' %}">Ver asistencias</a></li>
+                        <li><a class="dropdown-item" href="{% url 'agregar_asistencia' %}">Agregar asistencia</a></li>
+                    </ul>
+                </li>
+
+                <!-- Salones -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
+                        Salones
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'ver_salones' %}">Ver salones</a></li>
+                        <li><a class="dropdown-item" href="{% url 'agregar_salon' %}">Agregar salón</a></li>
+                    </ul>
+                </li>
+
             </ul>
-        </li>
-
-        <!-- PROFESORES -->
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                <i class="bi bi-person-badge"></i> Profesores
-            </a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{% url 'agregar_profesor' %}">Agregar Profesor</a></li>
-                <li><a class="dropdown-item" href="{% url 'ver_profesores' %}">Ver Profesores</a></li>
-            </ul>
-        </li>
-        <!-- ALUMNOS -->
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-            <i class="bi bi-people"></i> Alumnos
-            </a>
-            <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="{% url 'agregar_alumno' %}">Agregar Alumno</a></li>
-            <li><a class="dropdown-item" href="{% url 'ver_alumnos' %}">Ver Alumnos</a></li>
-            <!-- actualizar y borrar se hacen desde la lista -->
-            </ul>
-        </li>
-
-        <!-- CLASES -->
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="clasesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-journal-text"></i> Clases
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="clasesDropdown">
-                <li><a class="dropdown-item" href="{% url 'agregar_clase' %}">Agregar Clase</a></li>
-                <li><a class="dropdown-item" href="{% url 'ver_clases' %}">Ver Clases</a></li>
-            </ul>
-        </li>
-        </ul>
-    </div>
+        </div>
     </div>
 </nav>

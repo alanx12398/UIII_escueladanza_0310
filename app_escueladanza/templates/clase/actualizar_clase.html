@@ -1,26 +1,44 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container mt-4">
-<h2 class="text-center mb-3">Actualizar Clase</h2>
-<form method="POST">
-    {% csrf_token %}
-    <input type="text" name="nombre_clase" value="{{ clase.nombre_clase }}" class="form-control mb-2">
-    <textarea name="descripcion" class="form-control mb-2">{{ clase.descripcion }}</textarea>
-    <input type="text" name="horario" value="{{ clase.horario }}" class="form-control mb-2">
-    <label>Profesor:</label>
-    <select name="profesor" class="form-select mb-2">
-        {% for p in profesores %}
-        <option value="{{ p.id }}" {% if p.id == clase.profesor.id %}selected{% endif %}>{{ p.nombre }} {{ p.apellido }}</option>
-        {% endfor %}
-    </select>
-    <label>Alumnos:</label>
-    <select name="alumnos" multiple class="form-select mb-2">
-        {% for a in alumnos %}
-        <option value="{{ a.id }}" {% if a in clase.alumnos.all %}selected{% endif %}>{{ a.nombre }} {{ a.apellido }}</option>
-        {% endfor %}
-    </select>
-    <input type="date" name="fecha_inicio" value="{{ clase.fecha_inicio|date:'Y-m-d' }}" class="form-control mb-2">
-    <button type="submit" class="btn btn-primary w-100">Actualizar</button>
-</form>
+
+    <h2 class="text-center">Actualizar Clase</h2>
+    <form method="POST" action="{% url 'actualizar_clase' clase.id %}">
+        {% csrf_token %}
+
+        <label>Nombre:</label>
+        <input type="text" name="nombre_clase" class="form-control" value="{{ clase.nombre_clase }}" required>
+
+        <label class="mt-2">Descripción:</label>
+        <textarea name="descripcion" class="form-control">{{ clase.descripcion }}</textarea>
+
+        <label class="mt-2">Horario:</label>
+        <input type="text" name="horario" class="form-control" value="{{ clase.horario }}" required>
+
+        <label class="mt-2">Profesor:</label>
+        <select name="profesor" class="form-control">
+            {% for profesor in profesores %}
+            <option value="{{ profesor.id }}" {% if profesor.id == clase.profesor.id %} selected {% endif %}>
+                {{ profesor.nombre }}
+            </option>
+            {% endfor %}
+        </select>
+
+        <label class="mt-2">Alumnos:</label>
+        <select name="alumnos" class="form-control" multiple>
+            {% for alumno in alumnos %}
+            <option value="{{ alumno.id }}" {% if alumno in clase.alumnos.all %} selected {% endif %}>
+                {{ alumno.nombre }}
+            </option>
+            {% endfor %}
+        </select>
+
+        <label class="mt-2">Fecha de inicio:</label>
+        <input type="date" name="fecha_inicio" class="form-control" value="{{ clase.fecha_inicio }}">
+
+        <button class="btn btn-success mt-3" type="submit">Actualizar</button>
+    </form>
+
 </div>
 {% endblock %}
+

@@ -1,26 +1,40 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container mt-4">
-<h2 class="text-center mb-3">Agregar Clase</h2>
-<form method="POST">
-    {% csrf_token %}
-    <input type="text" name="nombre_clase" placeholder="Nombre de la clase" class="form-control mb-2" required>
-    <textarea name="descripcion" placeholder="Descripción" class="form-control mb-2"></textarea>
-    <input type="text" name="horario" placeholder="Horario" class="form-control mb-2">
-    <label>Profesor:</label>
-    <select name="profesor" class="form-select mb-2">
-        {% for p in profesores %}
-        <option value="{{ p.id }}">{{ p.nombre }} {{ p.apellido }}</option>
-        {% endfor %}
-    </select>
-    <label>Alumnos:</label>
-    <select name="alumnos" class="form-select mb-2" multiple>
-        {% for a in alumnos %}
-        <option value="{{ a.id }}">{{ a.nombre }} {{ a.apellido }}</option>
-        {% endfor %}
-    </select>
-    <input type="date" name="fecha_inicio" class="form-control mb-2">
-    <button type="submit" class="btn btn-success w-100">Guardar</button>
-</form>
+
+    <h2 class="text-center mb-3">Agregar Clase</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>Nombre de la clase:</label>
+        <input type="text" name="nombre_clase" class="form-control" required>
+
+        <label class="mt-2">Descripción:</label>
+        <textarea name="descripcion" class="form-control" required></textarea>
+
+        <label class="mt-2">Horario:</label>
+        <input type="text" name="horario" class="form-control" required>
+
+        <label class="mt-2">Profesor:</label>
+        <select name="profesor" class="form-control" required>
+            {% for profesor in profesores %}
+            <option value="{{ profesor.id }}">{{ profesor.nombre }}</option>
+            {% endfor %}
+        </select>
+
+        <label class="mt-2">Alumnos:</label>
+        <select name="alumnos" class="form-control" multiple>
+            {% for alumno in alumnos %}
+            <option value="{{ alumno.id }}">{{ alumno.nombre }}</option>
+            {% endfor %}
+        </select>
+
+        <label class="mt-2">Fecha de inicio:</label>
+        <input type="date" name="fecha_inicio" class="form-control" required>
+
+        <button class="btn btn-primary mt-3" type="submit">Guardar</button>
+    </form>
+
 </div>
 {% endblock %}

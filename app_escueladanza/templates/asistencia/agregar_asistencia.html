@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+
+    <h2 class="text-center mb-3">Registrar Asistencia</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>Alumno:</label>
+        <select name="alumno" class="form-control" required>
+            {% for alumno in alumnos %}
+            <option value="{{ alumno.id }}">{{ alumno.nombre }} {{ alumno.apellidos }}</option>
+            {% endfor %}
+        </select>
+
+        <label class="mt-2">Fecha:</label>
+        <input type="date" name="fecha" class="form-control" required>
+
+        <label class="mt-2">Clase:</label>
+        <select name="clase" class="form-control" required>
+            {% for clase in clases %}
+            <option value="{{ clase.id }}">{{ clase.nombre_clase }}</option>
+            {% endfor %}
+        </select>
+
+        <label class="mt-2">Estado:</label>
+        <select name="estado" class="form-control">
+            <option value="Asistió">Asistió</option>
+            <option value="Faltó">Faltó</option>
+        </select>
+
+        <label class="mt-2">Entrada:</label>
+        <input type="time" name="entrada" class="form-control">
+
+        <label class="mt-2">Salida:</label>
+        <input type="time" name="salida" class="form-control">
+
+        <button class="btn btn-primary mt-3" type="submit">Guardar</button>
+    </form>
+
+</div>
+{% endblock %}

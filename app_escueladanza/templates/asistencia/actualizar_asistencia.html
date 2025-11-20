@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+
+    <h2 class="text-center">Actualizar Asistencia</h2>
+    <form method="POST" action="{% url 'actualizar_asistencia' asistencia.id %}">
+        {% csrf_token %}
+
+        <label>Alumno:</label>
+        <select name="alumno" class="form-control" required>
+            {% for alumno in alumnos %}
+            <option value="{{ alumno.id }}" {% if alumno.id == asistencia.alumno.id %}selected{% endif %}>{{ alumno.nombre }} {{ alumno.apellido }}</option>
+            {% endfor %}
+        </select>
+
+        <label class="mt-2">Fecha:</label>
+        <input type="date" name="fecha" class="form-control" value="{{ asistencia.fecha }}" required>
+
+        <label class="mt-2">Clase:</label>
+        <select name="clase" class="form-control" required>
+            {% for clase in clases %}
+            <option value="{{ clase.id }}" {% if clase.id == asistencia.clase.id %}selected{% endif %}>{{ clase.nombre_clase }}</option>
+            {% endfor %}
+        </select>
+
+        <label class="mt-2">Estado:</label>
+        <select name="estado" class="form-control">
+            <option value="Asistió" {% if asistencia.estado == "Asistió" %}selected{% endif %}>Asistió</option>
+            <option value="Faltó" {% if asistencia.estado == "Faltó" %}selected{% endif %}>Faltó</option>
+        </select>
+
+        <label class="mt-2">Entrada:</label>
+        <input type="time" name="entrada" class="form-control" value="{{ asistencia.entrada }}">
+
+        <label class="mt-2">Salida:</label>
+        <input type="time" name="salida" class="form-control" value="{{ asistencia.salida }}">
+
+        <button class="btn btn-success mt-3" type="submit">Actualizar</button>
+    </form>
+
+</div>
+{% endblock %}

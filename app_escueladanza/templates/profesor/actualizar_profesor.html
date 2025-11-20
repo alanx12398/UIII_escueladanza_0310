@@ -2,7 +2,7 @@
 {% block title %}Actualizar Profesor{% endblock %}
 {% block content %}
 <h2>Actualizar Profesor</h2>
-<form method="POST" action="{% url 'realizar_actualizacion_profesor' profesor.id %}" class="mt-3">
+<form method="POST" action="{% url 'actualizar_profesor' profesor.id %}">
 {% csrf_token %}
 <div class="row mb-3">
     <div class="col">
